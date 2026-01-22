@@ -1,0 +1,30 @@
+<nav class="app-side-navigation" aria-label="Side navigation">
+  <%
+    items = sub_menu_navigation_items
+    i = 0
+  %>
+  <% while i < items.length %>
+    <% item = items[i] %>
+    <% if item[:header] %>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2"><%= item[:header] %></h2>
+      <% i += 1 %>
+    <% elsif item[:legend] %>
+      <p class="govuk-body-s govuk-!-margin-bottom-4"><%= item[:legend] %></p>
+      <% i += 1 %>
+    <% elsif item[:href] %>
+      <ul class="govuk-list govuk-!-margin-bottom-4">
+        <% while i < items.length && items[i][:href] %>
+          <% link_item = items[i] %>
+          <% if link_item[:text].present? %>
+            <li>
+              <%= link_to link_item[:text], link_item[:href], class: "govuk-link govuk-link--no-visited-state #{link_item[:classes]}" %>
+            </li>
+          <% end %>
+          <% i += 1 %>
+        <% end %>
+      </ul>
+    <% else %>
+      <% i += 1 %>
+    <% end %>
+  <% end %>
+</nav>

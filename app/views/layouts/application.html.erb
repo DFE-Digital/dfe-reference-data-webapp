@@ -1,29 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for(:title) || "Dfe Reference Data Webapp" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Dfe Reference Data Webapp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en" class="govuk-template govuk-template--rebranded govuk-template--wide">
+<head>
+  <title><%= content_for(:title) || "Dfe Reference Data Webapp" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Dfe Reference Data Webapp">
+  <meta name="mobile-web-app-capable" content="yes">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= yield :head %>
+  <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%# Includes all stylesheet files in app/assets/stylesheets %>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<%= govuk_header %>
+
+<%=
+  govuk_service_navigation(
+    current_path: request.path,
+    navigation_items: main_menu_navigation_items,
+    service_name: "dfe-reference-data UI",
+    service_url: "/",
+    )
+%>
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter" id="side-navigation">
+        <%= render partial: "layouts/side_navigation" %>
+      </div>
+
+      <div class="govuk-grid-column-three-quarters">
+        <%= yield %>
+      </div>
+    </div>
+  </main>
+</div>
+<%= render partial: "layouts/footer" %>
+</body>
+
+
 </html>

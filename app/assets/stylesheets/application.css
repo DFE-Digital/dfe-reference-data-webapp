@@ -8,3 +8,30 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* Side navigation styling */
+.app-side-navigation {
+  border-right: 1px solid #b1b4b6;
+  padding-right: 15px;
+}
+
+.app-side-navigation .govuk-list {
+  padding-left: 0;
+}
+
+.app-side-navigation .govuk-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f2f1;
+}
+
+.app-side-navigation .govuk-list li:last-child {
+  border-bottom: none;
+}
+
+.app-side-navigation .govuk-link {
+  text-decoration: none;
+}
+
+.app-side-navigation .govuk-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,19 @@
+<%= govuk_footer do |footer| %>
+
+  <% footer.with_meta_html do %>
+    <h2 class="govuk-heading-m">Support and guidance</h2>
+
+    <p class="govuk-body-s">
+      If you have a question, go to github repository. <br>
+      <a href="https://github.com/dfe-digital/dfe-reference-data" class="govuk-link">https://github.com/dfe-digital/dfe-reference-data</a>
+    <p>
+
+    <ul class="govuk-footer__inline-list">
+      <% [{ text: "Main menu", href: '/' }].each do |link| %>
+
+        <%= tag.li(govuk_footer_link_to(link[:text], link[:href]), class: "govuk-footer__inline-list-item") %>
+      <% end %>
+    </ul>
+  <% end %>
+
+<% end %>

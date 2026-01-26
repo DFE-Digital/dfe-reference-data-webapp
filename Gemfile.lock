@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/DFE-Digital/dfe-reference-data.git
+  revision: f38d2cfa89e7e849cd9a66c2becc4629b1c70b02
+  tag: v3.8.6
+  specs:
+    dfe-reference-data (3.8.6)
+      activesupport
+      tzinfo
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -435,6 +444,7 @@ DEPENDENCIES
   bundler-audit
   capybara
   debug
+  dfe-reference-data!
   factory_bot_rails
   govuk-components (~> 5.11)
   image_processing (~> 1.2)

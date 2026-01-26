@@ -16,23 +16,20 @@ module ApplicationHelper
   end
 
   def sub_menu_navigation_items
-    [
-      {
-        header: "Important things",
-      },
-      {
-        legend: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur arcu erat, accumsan id imperdiet et, porttitor at semub_manu",
-      },
-      {
-        href: '/foo',
-        text: "Some section",
-        classes: "",
-      },
-      {
-        href: '/foo',
-        text: "Another section",
-        classes: "",
-      },
-    ]
+    items = []
+
+    ReferenceDataIndex.grouped_by_category.each do |category, data_items|
+      items << { header: category }
+
+      data_items.each do |data_item|
+        items << {
+          href: "/data/#{data_item[:id]}",
+          text: data_item[:name],
+          classes: ""
+        }
+      end
+    end
+
+    items
   end
 end

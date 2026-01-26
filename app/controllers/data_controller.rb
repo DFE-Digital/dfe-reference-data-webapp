@@ -8,5 +8,6 @@ class DataController < ApplicationController
     end
 
     @reference_data = @data_item[:class]
+    @show_technical_fields = params[:show_technical].present?
   end
 end

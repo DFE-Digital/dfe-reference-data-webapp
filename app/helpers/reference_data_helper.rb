@@ -1,7 +1,15 @@
 module ReferenceDataHelper
-  def render_reference_data(data)
+  TECHNICAL_FIELD_PATTERNS = [
+    /^id$/,           # Primary key
+    /_id$/,           # Foreign keys (dttp_id, other_id, etc.)
+    /_ids$/,          # Array of IDs (subject_ids)
+    /_code$/,         # Codes (hecos_code, hesa_code)
+    /_uuid$/          # UUIDs
+  ].freeze
+
+  def render_reference_data(data, show_technical_fields: false)
     if reference_list?(data)
-      render_reference_list(data)
+      render_reference_list(data, show_technical_fields: show_technical_fields)
     elsif data.is_a?(Hash)
       render_hash_data(data)
     elsif data.is_a?(Array)
@@ -15,18 +23,65 @@ module ReferenceDataHelper
     data.respond_to?(:all) && data.respond_to?(:schema)
   end
 
-  def render_reference_list(data)
+  def technical_field?(field_name, schema = nil)
+    field_str = field_name.to_s
+
+    # Check field name patterns
+    return true if TECHNICAL_FIELD_PATTERNS.any? { |pattern| field_str.match?(pattern) }
+
+    # Check schema for kind: :code
+    if schema && schema[field_name].is_a?(Hash)
+      field_schema = schema[field_name]
+      return true if field_schema[:kind] == :code
+      return true if field_schema[:schema].is_a?(Hash) && field_schema[:schema][:kind] == :code
+    end
+
+    false
+  end
+
+  def filter_keys(keys, schema, show_technical_fields)
+    return keys if show_technical_fields
+
+    keys.reject { |key| technical_field?(key, schema) }
+  end
+
+  def count_technical_fields(keys, schema)
+    keys.count { |key| technical_field?(key, schema) }
+  end
+
+  def render_reference_list(data, show_technical_fields: false)
     records = data.all
     return content_tag(:p, "No records found") if records.empty?
 
     # Get all unique keys from records
     all_keys = records.flat_map { |r| r.keys }.uniq
+    display_keys = filter_keys(all_keys, data.schema, show_technical_fields)
+    hidden_count = all_keys.size - display_keys.size
 
     content_tag(:div, class: "reference-list") do
       safe_join([
         render_list_metadata(data),
-        render_records_table(records, all_keys, data)
+        render_technical_fields_toggle(show_technical_fields, hidden_count),
+        render_records_table(records, display_keys, data)
       ])
+    end
+  end
+
+  def render_technical_fields_toggle(show_technical_fields, hidden_count)
+    return "".html_safe if hidden_count == 0
+
+    content_tag(:div, class: "govuk-form-group govuk-!-margin-bottom-4") do
+      if show_technical_fields
+        safe_join([
+          content_tag(:span, "Showing #{hidden_count} technical field(s). ", class: "govuk-body"),
+          link_to("Hide technical fields", url_for(show_technical: nil), class: "govuk-link")
+        ])
+      else
+        safe_join([
+          content_tag(:span, "#{hidden_count} technical field(s) hidden. ", class: "govuk-body"),
+          link_to("Show technical fields", url_for(show_technical: "1"), class: "govuk-link")
+        ])
+      end
     end
   end
 

@@ -237,4 +237,18 @@ module ReferenceDataHelper
       value.to_s
     end
   end
+
+  def reference_data_gem_source_url(klass)
+    return nil unless klass&.name&.start_with?("DfE::ReferenceData::")
+
+    relative = klass.name.delete_prefix("DfE::ReferenceData::")
+    path_segments = relative.split("::").map do |segment|
+      segment
+        .gsub(/([A-Z\d]+)([A-Z][a-z])/, '\1_\2')
+        .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+        .downcase
+    end
+
+    "https://github.com/DFE-Digital/dfe-reference-data/blob/main/lib/dfe/reference_data/#{path_segments.join('/')}.rb"
+  end
 end

@@ -1,7 +1,14 @@
 <h1 class="govuk-heading-xl"><%= @data_item[:name] %></h1>
 
 <p class="govuk-body-s govuk-!-margin-bottom-4">
-  <code><%= @data_item[:id] %></code>
+  <span class="govuk-!-font-weight-bold">Class:</span>
+  <code><%= @reference_data %></code>
+  <% if (source_url = reference_data_gem_source_url(@reference_data.class)) %>
+    <%= link_to("View in gem", source_url, class: "govuk-link govuk-!-margin-left-2", target: "_blank", rel: "noopener noreferrer") %>
+  <% end %>
+  <% if @reference_data.respond_to?(:list_docs_url) && @reference_data.list_docs_url.present? %>
+    <%= link_to("View documentation", @reference_data.list_docs_url, class: "govuk-link govuk-!-margin-left-2", target: "_blank", rel: "noopener noreferrer") %>
+  <% end %>
 </p>
 
 <%= render_reference_data(@reference_data, show_technical_fields: @show_technical_fields) %>

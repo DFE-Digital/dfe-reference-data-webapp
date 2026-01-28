@@ -2,16 +2,16 @@ module ApplicationHelper
   def main_menu_navigation_items
 
     [
-      {
-        href: '/foo',
-        text: "Main data - hardcoded lists",
-        classes: "ml-auto",
-      },
-      {
-        href: '/foo',
-        text: "",
-        classes: "ml-auto",
-      },
+      # {
+      #   href: '/foo',
+      #   text: "Main data - hardcoded lists",
+      #   classes: "ml-auto",
+      # },
+      # {
+      #   href: '/foo',
+      #   text: "",
+      #   classes: "ml-auto",
+      # },
     ]
   end
 

@@ -6,7 +6,7 @@
   <% while i < items.length %>
     <% item = items[i] %>
     <% if item[:header] %>
-      <h2 class="govuk-heading-s govuk-!-margin-bottom-2"><%= item[:header] %></h2>
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2" id="category-<%= item[:header].parameterize %>"><%= item[:header] %></h2>
       <% i += 1 %>
     <% elsif item[:legend] %>
       <p class="govuk-body-s govuk-!-margin-bottom-4"><%= item[:legend] %></p>

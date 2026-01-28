@@ -92,11 +92,11 @@ module ReferenceDataHelper
       parts << content_tag(:p, data.list_description, class: "govuk-body-l")
     end
 
-    if data.list_docs_url.present?
-      parts << content_tag(:p, class: "govuk-body") do
-        link_to("View documentation", data.list_docs_url, class: "govuk-link", target: "_blank", rel: "noopener noreferrer")
-      end
-    end
+    # if data.list_docs_url.present?
+    #   parts << content_tag(:p, class: "govuk-body") do
+    #     link_to("View documentation", data.list_docs_url, class: "govuk-link", target: "_blank", rel: "noopener noreferrer")
+    #   end
+    # end
 
     if data.list_usage_guidance.present?
       parts << content_tag(:details, class: "govuk-details") do
@@ -205,16 +205,13 @@ module ReferenceDataHelper
   end
 
   def format_cell_value(value)
+    if value.blank?
+      return content_tag(:span, "-", class: "text-muted")
+    end
     case value
-    when nil
-      content_tag(:span, "nil", class: "text-muted")
     when Array
-      if value.empty?
-        content_tag(:span, "[]", class: "text-muted")
-      else
-        content_tag(:ul, class: "govuk-list govuk-list--bullet") do
-          safe_join(value.map { |v| content_tag(:li, format_cell_value(v)) })
-        end
+      content_tag(:ul, class: "govuk-list govuk-list--bullet") do
+        safe_join(value.map { |v| content_tag(:li, format_cell_value(v)) })
       end
     when Hash
       content_tag(:dl, class: "govuk-summary-list govuk-summary-list--no-border") do
@@ -239,9 +236,9 @@ module ReferenceDataHelper
   end
 
   def reference_data_gem_source_url(klass)
-    return nil unless klass&.name&.start_with?("DfE::ReferenceData::")
+    return nil unless klass&.start_with?("DfE::ReferenceData::")
 
-    relative = klass.name.delete_prefix("DfE::ReferenceData::")
+    relative = klass.delete_prefix("DfE::ReferenceData::")
     path_segments = relative.split("::").map do |segment|
       segment
         .gsub(/([A-Z\d]+)([A-Z][a-z])/, '\1_\2')

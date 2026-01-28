@@ -1,2 +1,32 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<h1 class="govuk-heading-xl">DfE Reference Data</h1>
+
+<p class="govuk-body-l">
+  Browse and explore the reference data lists available in the dfe-reference-data gem.
+</p>
+
+<%= govuk_summary_list do |summary_list|
+  summary_list.with_row do |row|
+    row.with_key { "Total reference data lists" }
+    row.with_value { @total_lists }
+  end
+
+  summary_list.with_row do |row|
+    row.with_key { "Categories" }
+    row.with_value { @total_categories }
+  end
+end %>
+
+<h2 class="govuk-heading-l">Categories</h2>
+
+<ul class="govuk-list">
+  <% @categories.each do |category, items| %>
+    <li>
+      <%= link_to category, "#category-#{category.parameterize}", class: "govuk-link govuk-!-font-weight-bold" %>
+      <span class="govuk-body-s">(<%= items.count %> <%= "list".pluralize(items.count) %>)</span>
+    </li>
+  <% end %>
+</ul>
+
+<p class="govuk-body">
+  Use the navigation on the left to browse individual reference data lists.
+</p>

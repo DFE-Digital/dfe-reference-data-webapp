@@ -79,34 +79,34 @@ jobs:
     #   run: |
     #     run some tests
 
-  deploy-review-app:
-    name: Deployment To Review
-    concurrency: deploy_review_${{ github.event.pull_request.number }}
-    if: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'deploy') }}
-    needs: [build]
-    environment:
-      name: review
-      url: ${{ steps.deploy_review.outputs.environment_url }}
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      pull-requests: write
-
-    steps:
-    - name: Deploy App to Review
-      id: deploy_review
-      uses: DFE-Digital/github-actions/deploy-to-aks@master
-      with:
-        azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        environment: review
-        pr-number: ${{ github.event.pull_request.number }}
-        sha: ${{ needs.build.outputs.docker-image-tag }}
-        terraform-base: ${{ env.TERRAFORM_BASE }}
-        healthcheck: ${{ env.HEALTHCHECK_CMD }}
-        db-seed: true
-        smoke-test: true
+#  deploy-review-app:
+#    name: Deployment To Review
+#    concurrency: deploy_review_${{ github.event.pull_request.number }}
+#    if: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'deploy') }}
+#    needs: [build]
+#    environment:
+#      name: review
+#      url: ${{ steps.deploy_review.outputs.environment_url }}
+#    runs-on: ubuntu-latest
+#    permissions:
+#      id-token: write
+#      pull-requests: write
+#
+#    steps:
+#    - name: Deploy App to Review
+#      id: deploy_review
+#      uses: DFE-Digital/github-actions/deploy-to-aks@master
+#      with:
+#        azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+#        azure-subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+#        azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+#        environment: review
+#        pr-number: ${{ github.event.pull_request.number }}
+#        sha: ${{ needs.build.outputs.docker-image-tag }}
+#        terraform-base: ${{ env.TERRAFORM_BASE }}
+#        healthcheck: ${{ env.HEALTHCHECK_CMD }}
+#        db-seed: true
+#        smoke-test: true
 #        gcp-wip: ${{ vars.GCP_WIP }}
 #        gcp-project-id: ${{ vars.GCP_PROJECT_ID }}
 
@@ -124,7 +124,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [development,production]
+        environment: [review]
 
     steps:
     - name: Deploy app to ${{ matrix.environment }}

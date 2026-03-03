@@ -1,6 +1,5 @@
 module ApplicationHelper
   def main_menu_navigation_items
-
     [
       # {
       #   href: '/foo',

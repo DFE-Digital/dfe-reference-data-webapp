@@ -1,7 +1,7 @@
-require 'dfe/reference_data'
-require 'dfe/reference_data/countries_and_territories'
-require 'dfe/reference_data/subject_specialisms'
-require 'dfe/reference_data/hesa/domiciles'
+require "dfe/reference_data"
+require "dfe/reference_data/countries_and_territories"
+require "dfe/reference_data/subject_specialisms"
+require "dfe/reference_data/hesa/domiciles"
 class ReferenceDataIndex
   DATA = [
     # Degrees

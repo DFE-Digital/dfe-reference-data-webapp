@@ -8,9 +8,9 @@ DOCKER_REPOSITORY=ghcr.io/dfe-digital/dfe-reference-data-webapp
 help:
 	@grep -E '^[a-zA-Z\._\-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: development
-development: test-cluster
-	$(eval include global_config/development.sh)
+.PHONY: test
+test: test-cluster
+	$(eval include global_config/test.sh)
 
 .PHONY: review
 review: test-cluster

@@ -124,7 +124,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        environment: [review]
+        environment: [test]
 
     steps:
     - name: Deploy app to ${{ matrix.environment }}

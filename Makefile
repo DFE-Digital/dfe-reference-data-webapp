@@ -12,16 +12,6 @@ help:
 test: test-cluster
 	$(eval include global_config/test.sh)
 
-.PHONY: review
-review: test-cluster
-	$(if ${PR_NUMBER},,$(error Missing PR_NUMBER))
-	$(eval ENVIRONMENT=pr-${PR_NUMBER})
-	$(eval include global_config/review.sh)
-
-production: production-cluster
-	$(if $(or ${SKIP_CONFIRM}, ${CONFIRM_PRODUCTION}), , $(error Missing CONFIRM_PRODUCTION=yes))
-	$(eval include global_config/production.sh)
-
 domains:
 	$(eval include global_config/domains.sh)
 

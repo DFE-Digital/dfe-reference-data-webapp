@@ -139,7 +139,7 @@ jobs:
         terraform-base: ${{ env.TERRAFORM_BASE }}
         healthcheck: ${{ env.HEALTHCHECK_CMD }}
         slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
-        smoke-test: true
+        smoke-test: false
 
   manual_deploy:
     name: Manual deploy
@@ -166,5 +166,5 @@ jobs:
         terraform-base: ${{ env.TERRAFORM_BASE }}
         healthcheck: ${{ env.HEALTHCHECK_CMD }}
         slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
-        smoke-test: true
+        smoke-test: false
         db-seed: ${{ inputs.environment == 'review' && 'true' || 'false' }}

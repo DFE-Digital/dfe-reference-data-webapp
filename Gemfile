@@ -51,7 +51,7 @@ group :development, :test do
   gem "bundler-audit", require: false
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem "brakeman", require: false
+  gem "brakeman", '8.0.5', require: false
 
   gem "dfe-reference-data", require: "dfe/reference_data", github: "DFE-Digital/dfe-reference-data", tag: "v3.8.6"
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]

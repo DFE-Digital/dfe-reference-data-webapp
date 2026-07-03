@@ -2,15 +2,15 @@ module ApplicationHelper
   def main_menu_navigation_items
     [
       {
-        href: '/',
+        href: "/",
         text: "Hardcoded reference data",
-        classes: "ml-auto",
+        classes: "ml-auto"
       },
       {
-        href: '/guides',
+        href: "/guides",
         text: "Data usage guides",
-        classes: "ml-auto",
-      },
+        classes: "ml-auto"
+      }
     ]
   end
 
@@ -35,19 +35,19 @@ module ApplicationHelper
   def guides_sub_menu_navigation_items
     data = {
       "Countries" => [
-        { id: "countries", name: "Using country data" },
+        { id: "countries", name: "Using country data" }
       ],
       "'Almost' reference data" => [
         { id: "schools", name: "School list from GIAS" },
-        { id: "local_authorities", name: "Local authorities" },
-      #{ id: "post_codes", name: "Post codes" },
+        { id: "local_authorities", name: "Local authorities" }
+        # { id: "post_codes", name: "Post codes" },
       ],
       "Miscellaneous data" => [
         { id: "passports", name: "Passports list" },
-        { id: "initial_training_providers", name: "Initial Teacher Training providers (ITT)" },
+        { id: "initial_training_providers", name: "Initial Teacher Training providers (ITT)" }
         # { id: "teaching_school_hubs", name: "Teaching school hubs" },
         # { id: "recruitment_cycles", name: "Recruitment cycles" },
-      ],
+      ]
     }
 
     items = []

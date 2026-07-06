@@ -23,14 +23,15 @@
   <%= javascript_importmap_tags %>
 </head>
 
-<body>
-<%= govuk_header %>
+<body class="govuk-template__body">
+<%= govuk_header do |header| %>
+  <%= header.with_product_name(name: "DfE Reference Data Guides") %>
+<% end %>
 
 <%=
   govuk_service_navigation(
     current_path: request.path,
     navigation_items: main_menu_navigation_items,
-    service_name: "dfe-reference-data UI",
     service_url: "/",
     )
 %>

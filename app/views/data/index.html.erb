@@ -1,22 +1,12 @@
-<h1 class="govuk-heading-xl">DfE Reference Data</h1>
+<h1 class="govuk-heading-m">DfE Reference Data</h1>
 
-<p class="govuk-body-l">
+<p class="govuk-body">
   Browse and explore the reference data lists available in the dfe-reference-data gem.
 </p>
 
-<%= govuk_summary_list do |summary_list|
-  summary_list.with_row do |row|
-    row.with_key { "Total reference data lists" }
-    row.with_value { @total_lists }
-  end
 
-  summary_list.with_row do |row|
-    row.with_key { "Categories" }
-    row.with_value { @total_categories }
-  end
-end %>
 
-<h2 class="govuk-heading-l">Categories</h2>
+<h2 class="govuk-heading-m">Available data</h2>
 
 <ul class="govuk-list">
   <% @categories.each do |category, items| %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :data
-  get "main/index"
+  get "about/index", to: "guides#about"
   get "guides", to: "guides#index", as: :guides
   get "guides/*guide", to: "guides#show", as: :guide
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "main#index"
+  root "about#index"
 end

@@ -2,6 +2,11 @@ module ApplicationHelper
   def main_menu_navigation_items
     [
       {
+        href: "/about/index",
+        text: "Data in DfE SD",
+        classes: "ml-auto"
+      },
+      {
         href: "/",
         text: "Hardcoded reference data",
         classes: "ml-auto"

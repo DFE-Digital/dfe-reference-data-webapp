@@ -2,18 +2,18 @@ module ApplicationHelper
   def main_menu_navigation_items
     [
       {
-        href: "/about/index",
-        text: "Data in DfE SD",
+        href: "/about/overview",
+        text: "Overview",
         classes: "ml-auto"
       },
       {
-        href: "/",
+        href: "/data",
         text: "Hardcoded reference data",
         classes: "ml-auto"
       },
       {
-        href: "/guides",
-        text: "Data usage guides",
+        href: "/about/guides",
+        text: "Data catalogue",
         classes: "ml-auto"
       }
     ]

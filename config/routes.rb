@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :data
   get "about/index", to: "guides#about"
+  get "about/overview", to: "guides#overview"
+
   get "guides", to: "guides#index", as: :guides
   get "guides/*guide", to: "guides#show", as: :guide
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

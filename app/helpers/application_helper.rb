@@ -15,6 +15,11 @@ module ApplicationHelper
         href: "/guides",
         text: "Data usage guides",
         classes: "ml-auto"
+      },
+      {
+        href: "/about/overview",
+        text: "Overview",
+        classes: "ml-auto"
       }
     ]
   end

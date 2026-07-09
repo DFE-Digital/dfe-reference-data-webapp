@@ -12,8 +12,8 @@ module ApplicationHelper
         classes: "ml-auto"
       },
       {
-        href: "/guides",
-        text: "Data usage guides",
+        href: "/about/guides",
+        text: "Data catalogue",
         classes: "ml-auto"
       }
     ]

@@ -1,0 +1,166 @@
+<h1 class="govuk-heading-m">Data Catalogue</h1>
+<p class="govuk-body">
+  Browse datasets that are commonly used across DfE digital services.
+</p>
+<p class="govuk-body">
+  Before creating a new dataset, check whether an existing dataset already exists and whether there is an authoritative source available.
+</p>
+<p class="govuk-body">
+  Using shared datasets helps services remain consistent, reduces duplication and improves the ability to analyse and compare data across DfE systems.
+</p>
+<h2 class="govuk-heading-m">DfE Reference Data Catalogue</h2>
+<p class="govuk-body">
+  The DfE Reference Data is available as <a>ruby gem</a> library as well as <a>downloadable</a> SQLite database.
+</p>
+<p class="govuk-body">
+  The DfE Reference Data Catalogue contains reusable datasets maintained through the DfE Reference Data library.
+</p>
+<p class="govuk-body">
+  These datasets are intended to be shared and reused across multiple services.
+</p>
+<p class="govuk-body">
+  Examples include:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>Countries and Territories</li>
+  <li>HESA Domiciles</li>
+  <li>Qualifications</li>
+  <li>Degrees</li>
+  <li>Degree Types</li>
+  <li>Subject Specialisms</li>
+  <li>Equality and Diversity Data</li>
+  <li>Bank Holidays</li>
+  <li>Common Aggregation Hierarchy (CAH)</li>
+</ul>
+<p class="govuk-body">
+  Browse the catalogue to explore available datasets, definitions and implementation information.
+</p>
+<p class="govuk-body">
+  <%= link_to "View Reference Data Catalogue", "/data", class: "govuk-link" %>
+</p>
+<h2 class="govuk-heading-m">Countries, Territories and Domiciles</h2>
+<p class="govuk-body">
+  There are 3 different terms that are used to refer to what can be understood as "country" or used in context.
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <b>Country</b> - sovereign state, recognised by Foreign, Commonwealth & Development Office
+  </li>
+  <li><b>Territory</b> - geographical region, which is not on the Foreign, Commonwealth & Development Office Countries list.</li>
+  <li><b>Domicile</b> - place of a person's legal home. Could be a country or a territory.</li>
+
+</ul>
+</p>
+<p class="govuk-body">
+  Several datasets are available for country-related use cases.
+</p>
+<h3 class="govuk-heading-s">Countries and Territories</h3>
+<p class="govuk-body">
+  Use for:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>nationality</li>
+  <li>country of residence</li>
+  <li>standard country selection</li>
+  <li>most service implementations</li>
+</ul>
+<h3 class="govuk-heading-s">HESA Domiciles</h3>
+<p class="govuk-body">
+  Use for:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>higher education data</li>
+  <li>HESA-related integrations</li>
+  <li>domicile reporting requirements</li>
+</ul>
+<p class="govuk-body">
+  Further information and dataset definitions are available through the DfE Reference Data Catalogue.
+</p>
+<h2 class="govuk-heading-m">Schools</h2>
+<p class="govuk-body">
+  <b>Authoritative source:</b> Get Information About Schools (GIAS)
+</p>
+<p class="govuk-body">
+  Use when your service requires:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>school selection</li>
+  <li>school validation</li>
+  <li>school reporting</li>
+  <li>school reference information</li>
+</ul>
+<p class="govuk-body">
+  The full schools dataset is available through the
+  <a target="_blank" href="https://www.get-information-schools.service.gov.uk/" class="govuk-link">GIAS service (Get Information about Schools)</a>.
+  "All Establishments Data" download.
+</p>
+<p class="govuk-body">
+  Example of how to import the dataset is available
+  <a target="_blank" class="govuk-link" href="https://github.com/DFE-Digital/npq-registration/blob/c54083fe11a491c22cda6bb618ff34f52cfcb7a4/app/services/import_gias_schools.rb">
+    here
+  </a>
+</p>
+
+<h2 class="govuk-heading-m">Local Authorities</h2>
+<p class="govuk-body">
+  <b>Authoritative source:</b> Get Information About Schools (GIAS)
+</p>
+<p class="govuk-body">
+  Local authority information is available from the schools dataset.
+</p>
+<p class="govuk-body">
+  Use when your service requires:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>local authority selection</li>
+  <li>local authority validation</li>
+  <li>geographic reporting</li>
+  <li>local authority codes</li>
+</ul>
+<h2 class="govuk-heading-m">Initial Teacher Training Providers</h2>
+<p class="govuk-body">
+  <b>Authoritative source:</b> Accredited Initial Teacher Training Provider List
+</p>
+<p class="govuk-body">
+  Use when your service requires:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>provider selection</li>
+  <li>provider validation</li>
+  <li>provider reporting</li>
+  <li>teacher training service integrations</li>
+</ul>
+<h2 class="govuk-heading-m">Datasets Used by Individual Services</h2>
+<p class="govuk-body">
+  Some datasets are currently maintained within individual services rather than as shared reference data.
+</p>
+<p class="govuk-body">
+  These datasets may be useful to other services and could be considered for wider reuse in future.
+</p>
+<h3 class="govuk-heading-s">Passport Issuing Authorities</h3>
+<p class="govuk-body">
+  A passport issuing authorities dataset is currently used by Apply for Qualified Teacher Status (QTS).
+  The list can be found
+  <a class="govuk-link" target="_blank" href="https://github.com/DFE-Digital/apply-for-qualified-teacher-status/blob/65bea96b1189a330a64e5457d3d59e30b6da82c0/public/passport-country-of-issue-canonical-list.json">
+    here
+  </a>.
+</p>
+<p class="govuk-body">
+  If your service requires passport issuing authority data, contact the SD Data Insights Team before creating your own dataset.
+</p>
+<p class="govuk-body">
+  Understanding demand across services helps inform whether this dataset should become part of the DfE Reference Data Catalogue in the future.
+</p>
+<h2 class="govuk-heading-m">Need Help?</h2>
+<p class="govuk-body">
+  Contact the SD Data Insights Team if:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>you cannot find an appropriate dataset</li>
+  <li>a dataset appears incorrect</li>
+  <li>you need guidance on using a dataset</li>
+  <li>you would like a dataset reviewed for inclusion within the DfE Reference Data Catalogue</li>
+  <li>you are aware of a dataset used by another service that could benefit wider reuse</li>
+</ul>
+<p class="govuk-body">
+  The team can help identify existing datasets, advise on appropriate sources and support greater consistency across DfE services.
+</p>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :data
-  get "about/index", to: "guides#about"
-  get "about/overview", to: "guides#overview"
+  get "about/index", to: "about#index"
+  get "about/guides", to: "about#guides"
+  get "about/overview", to: "about#overview"
 
   get "guides", to: "guides#index", as: :guides
   get "guides/*guide", to: "guides#show", as: :guide
@@ -17,5 +18,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "guides#overview"
+  root "about#overview"
 end

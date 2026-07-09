@@ -16,16 +16,6 @@ class GuidesController < ApplicationController
     render @guide
   end
 
-  def about
-    @side_menu = []
-    render "about/index"
-  end
-
-  def overview
-    @side_menu = []
-    render "about/overview"
-  end
-
   private
   def set_side_menu
     @side_menu = helpers.guides_sub_menu_navigation_items

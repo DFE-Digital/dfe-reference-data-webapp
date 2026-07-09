@@ -7,7 +7,7 @@ module ApplicationHelper
         classes: "ml-auto"
       },
       {
-        href: "/",
+        href: "/data",
         text: "Hardcoded reference data",
         classes: "ml-auto"
       },

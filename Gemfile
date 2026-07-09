@@ -70,7 +70,7 @@ group :test do
 end
 
 group :development, :test do
-  gem "sqlite3", ">= 2.1"
+  gem "sqlite3", ">= 2.9.5"
   gem "rspec-rails"
   gem "factory_bot_rails"
 end

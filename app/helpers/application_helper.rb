@@ -8,12 +8,12 @@ module ApplicationHelper
       },
       {
         href: "/data",
-        text: "Hardcoded reference data",
+        text: "Reference Data Lists",
         classes: "ml-auto"
       },
       {
         href: "/about/guides",
-        text: "Data catalogue",
+        text: "Guidance",
         classes: "ml-auto"
       }
     ]

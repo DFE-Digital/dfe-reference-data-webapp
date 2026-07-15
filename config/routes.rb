@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   resources :data
-  get "about/index", to: "about#index"
+  get "about/index", to: redirect("about/overview")
   get "about/guides", to: "about#guides"
   get "about/overview", to: "about#overview"
 
-  get "guides", to: "guides#index", as: :guides
-  get "guides/*guide", to: "guides#show", as: :guide
+  get "guides", to: redirect("about/index")
+  get "guides/*guide", to: redirect("about/index")
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

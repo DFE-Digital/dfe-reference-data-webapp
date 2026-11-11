@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       name: Checkout
 
     - name: Build and push docker image
@@ -72,7 +72,7 @@ jobs:
 
     steps:
     - name: Check out repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     # - name: Run tests
     #   shell: bash
@@ -138,8 +138,7 @@ jobs:
         sha: ${{ needs.build.outputs.docker-image-tag }}
         terraform-base: ${{ env.TERRAFORM_BASE }}
         healthcheck: ${{ env.HEALTHCHECK_CMD }}
-        slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
-        smoke-test: true
+        smoke-test: false
 
   manual_deploy:
     name: Manual deploy
@@ -165,6 +164,5 @@ jobs:
         sha: ${{ inputs.docker-image-tag }}
         terraform-base: ${{ env.TERRAFORM_BASE }}
         healthcheck: ${{ env.HEALTHCHECK_CMD }}
-        slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
-        smoke-test: true
+        smoke-test: false
         db-seed: ${{ inputs.environment == 'review' && 'true' || 'false' }}

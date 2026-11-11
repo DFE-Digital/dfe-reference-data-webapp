@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :data
-  get "main/index"
+  get "about/index", to: redirect("about/overview")
+  get "about/guides", to: "about#guides"
+  get "about/overview", to: "about#overview"
+
+  get "guides", to: redirect("about/index")
+  get "guides/*guide", to: redirect("about/index")
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,5 +18,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "main#index"
+  root "about#overview"
 end
